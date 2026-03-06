@@ -25,20 +25,6 @@
     <link rel="stylesheet" href="./Style/style.css">
 </head>
 
-<!-- 
-<fieldset class="fieldset  border-base-300 rounded-box w-xs border p-4 ">
-    
-    <legend class="fieldset-legend">Login</legend>
-
-    <label class="label">Email</label>
-    <input type="email" class="input" placeholder="Email" />
-
-    <label class="label">Password</label>
-    <input type="password" class="input" placeholder="Password" />
-
-    <button class="btn btn-neutral mt-4">Login</button>
-</fieldset> -->
-
 <body class="min-h-screen bg-base-200 flex justify-center items-center">
     <div class=" bg-white w-[520px] p-8 rounded-lg space-y-6 shadow-xl">
         <div class="text-center space-y-6">
@@ -52,14 +38,14 @@
         <fieldset class="fieldset rounded-box w-full">
 
             <label class="label text-[#1f2937] text-sm font-medium">Username</label>
-            <input type="text" class="input w-full" placeholder="Enter Your Username" />
+            <input id="userName" type="text" class="input w-full" placeholder="Enter Your Username" />
             <p class="text-primary">Default: admin</p>
 
             <label class="label text-[#1f2937] text-sm font-medium mt-2">Password</label>
-            <input type="password" class="input w-full" placeholder="Password" />
+            <input id="password" type="password" class="input w-full" placeholder="Password" />
             <p class="text-primary">Default: admin123</p>
 
-            <button class="btn btn-primary mt-6">Login</button>
+            <button id="signIn-btn" class="btn btn-primary mt-6">Sign In</button>
         </fieldset>
 
         <div>
@@ -73,6 +59,9 @@
             </fieldset>
         </div>
     </div>
+
+
+    <script src="./Script/script.js"></script>
 </body>
 
 </html>
