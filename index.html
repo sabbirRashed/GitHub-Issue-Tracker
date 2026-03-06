@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github-Issue-Tracker | Sign In To Manage Your Issues</title>
+    <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
+
+    <!-- daisyUi & tailwind cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- fontawsome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="./Style/style.css">
+</head>
+
+<!-- 
+<fieldset class="fieldset  border-base-300 rounded-box w-xs border p-4 ">
+    
+    <legend class="fieldset-legend">Login</legend>
+
+    <label class="label">Email</label>
+    <input type="email" class="input" placeholder="Email" />
+
+    <label class="label">Password</label>
+    <input type="password" class="input" placeholder="Password" />
+
+    <button class="btn btn-neutral mt-4">Login</button>
+</fieldset> -->
+
+<body class="min-h-screen bg-base-200 flex justify-center items-center">
+    <div class=" bg-white w-[520px] p-8 rounded-lg space-y-6 shadow-xl">
+        <div class="text-center space-y-6">
+            <img src="./assets/github-logo.png" alt="" class="mx-auto">
+            <div class="space-y-1">
+                <h2 class="text-2xl font-semibold text-[#1f2937]">GitHub Issues Tracker</h2>
+                <p class="text-[#64748B]">Sign in to manage your issues</p>
+            </div>
+        </div>
+
+        <fieldset class="fieldset rounded-box w-full">
+
+            <label class="label text-[#1f2937] text-sm font-medium">Username</label>
+            <input type="text" class="input w-full" placeholder="Enter Your Username" />
+            <p class="text-primary">Default: admin</p>
+
+            <label class="label text-[#1f2937] text-sm font-medium mt-2">Password</label>
+            <input type="password" class="input w-full" placeholder="Password" />
+            <p class="text-primary">Default: admin123</p>
+
+            <button class="btn btn-primary mt-6">Login</button>
+        </fieldset>
+
+        <div>
+            <fieldset class=" border-t border-t-gray-300 pt-5 text-center">
+                <legend class="px-5">OR</legend>
+                <h2 class="text-[#64748B] text-sm">Demo Credentials</h2>
+                <div class="bg-base-200 mt-2 py-5 rounded-lg">
+                    <p class="text-gray-500 font-medium"><span class="text-[#1f2937]">Username:</span> admin</p>
+                    <p class="text-gray-500 font-medium"><span class="text-[#1f2937]">password:</span> admin123</p>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</body>
+
+</html>
