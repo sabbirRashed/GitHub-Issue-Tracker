@@ -73,7 +73,7 @@ const displayIssues = (data) => {
                         </div>
                         <h2 class="font-semibold text-[#1F2937] mt-3">${item.title}</h2>
                         <p class="text-sm text-[#64748B] mt-2">${item.description}</p>
-                        <div class="mt-3.5">
+                        <div class="mt-3.5 flex flex-wrap gap-1">
                             ${createElement(item.labels)}
                         </div>
                     </div>
@@ -85,7 +85,7 @@ const displayIssues = (data) => {
                             </div>
                             <div class="flex justify-between items-center">
                                 <h3>Assigne: ${item.assignee ? item.assignee : "Unassigned"}</h3> 
-                                <p>Update: ${new Date(item.updatedAt).toLocaleDateString()}</p>
+                                <p class="text-right">Update: ${new Date(item.updatedAt).toLocaleDateString()}</p>
                             </div>                         
                         </div>
                     </div>
