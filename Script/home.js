@@ -1,0 +1,103 @@
+
+const imageMaker = (status) => {
+    if (status.toLowerCase() === "open") {
+        const openIcon = `<img src= "./assets/Open-Status.png">`;
+        return openIcon;
+    }
+    else {
+        const closedIcon = `<img src="./assets/Closed-Status.png" alt="">`;
+        return closedIcon;
+    }
+}
+
+
+const createElement = (arr) => {
+    const htmlElement = arr.map(el => {
+        return `<span class="px-3 py-1 ${el.toLowerCase() === "bug" ? "bg-red-100 text-red-500"
+                : el.toLowerCase() === "help wanted" ? "bg-amber-100 text-amber-500"
+                    : el.toLowerCase() === "enhancement" ? "bg-green-100 text-green-500"
+                        : el.toLowerCase() === "documentation" ? "bg-blue-100 text-blue-500"
+                            : el.toLowerCase() === "good first issue" ? "bg-purple-100 text-purple-500"
+                                : ""}  font-medium rounded-3xl">
+        <i class="${el.toLowerCase() === "bug" ? "fa-solid fa-bug"
+                : el.toLowerCase() === "help wanted" ? "fa-solid fa-life-ring"
+                    : el.toLowerCase() === "enhancement" ? "fa-solid fa-wand-magic-sparkles"
+                        : el.toLowerCase() === "documentation" ? "fa-solid fa-book"
+                            : el.toLowerCase() === "good first issue" ? "fa-solid fa-star"
+                                : ""
+            } mr-1 text-sm"></i>${el}</span>`
+    })
+    return (htmlElement.join(" "));
+}
+
+
+const loadAllIssues = () => {
+    const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
+    fetch(url)
+        .then((res) => res.json()
+            .then((data) => displayIssues(data.data))
+
+        )
+}
+
+
+// 
+// "id": 1,
+// "title": "Fix navigation menu on mobile devices",
+// "description": "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.",
+// "status": "open",
+// "labels": [
+// "bug",
+// "help wanted"
+// ],
+// "priority": "high",
+// "author": "john_doe",
+// "assignee": "jane_smith",
+// "createdAt": "2024-01-15T10:30:00Z",
+// "updatedAt": "2024-01-15T10:30:00Z"
+// }
+
+const displayIssues = (data) => {
+
+    const issueContainer = document.getElementById("issue-container");
+    issueContainer.innerHTML = "";
+    data.forEach(item => {
+
+        const div = document.createElement("div");
+        div.innerHTML = `
+                <div class="card bg-white rounded-lg shadow-md h-full ${item.status.toLowerCase() === "open"? "border border-green-200 border-t-4 border-t-green-500": "border border-purple-200 border-t-4 border-t-purple-500"}">
+                    <div class="p-5">
+                        <div class="flex justify-between items-center">
+                            ${imageMaker(item.status)}
+                            <p class="text-sm font-semibold ${item.priority.toLowerCase() === "high" ? "text-red-500 bg-red-100" : item.priority.toLowerCase() === "medium" ? "text-amber-500 bg-amber-100" : item.priority.toLowerCase() === "low" ? "text-gray-500 bg-gray-100" : ""} px-6 py-1 rounded-2xl">${item.priority.toUpperCase()}</p>
+                        </div>
+                        <h2 class="font-semibold text-[#1F2937] mt-3">${item.title}</h2>
+                        <p class="text-sm text-[#64748B] mt-2">${item.description}</p>
+                        <div class="mt-3.5">
+                            ${createElement(item.labels)}
+                        </div>
+                    </div>
+                    <div class=" border-t border-gray-200">
+                        <div class=" p-5 text-sm text-[#64748B] space-y-1">
+                            <div class="flex justify-between items-center">
+                                <h3>#${item.id} by ${item.author}</h3>
+                                <p>${new Date(item.createdAt).toLocaleDateString()}</p>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <h3>Assigne: ${item.assignee ? item.assignee : "Unassigned"}</h3> 
+                                <p>Update: ${new Date(item.updatedAt).toLocaleDateString()}</p>
+                            </div>                         
+                        </div>
+                    </div>
+                </div>
+
+                `
+        issueContainer.appendChild(div);
+
+    })
+
+
+
+}
+
+loadAllIssues()
