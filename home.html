@@ -26,9 +26,44 @@
 </head>
 
 <body>
-    <header>
-       
-    </header>
+    <!-- <header class=" shadow-sm">
+        <div class="navbar bg-base-100 max-w-9/12 mx-auto">
+            <div class="flex-1">
+                <a class="btn btn-ghost text-xl">
+                    <img src="./assets/github-logo.png" alt="">
+                    <span>GitHub Issues Tracker</span>
+                </a>
+            </div>
+            <div class="join">
+                <div>
+                    <label class="input validator join-item">
+                        <input type="search" placeholder="Search issues..." required />
+                    </label>
+                </div>
+                <button class="btn btn-neutral join-item">Join</button>
+            </div>
+        </div>
+    </header> -->
+
+    <nav class="bg-base-200  p-4 ">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-5 max-w-9/12 mx-auto">
+            <div class="flex flex-col md:flex-row items-center gap-1">
+                <div><img src="./assets/github-logo.png" alt="" class="h-9 w-auto"></div>
+                <h2 class="text-2xl text-[#1F2937] font-semibold">GitHub Issues Tracker</h2>
+            </div>
+
+            <div>
+                <div class="join">
+                    <div>
+                        <label class="input validator join-item">
+                            <input type="text" placeholder="Search issues..." required />
+                        </label>
+                    </div>
+                    <button class="btn btn-primary join-item">Searh</button>
+                </div>
+            </div>
+        </div>
+    </nav>
 </body>
 
 </html>
