@@ -25,45 +25,35 @@
     <link rel="stylesheet" href="./Style/style.css">
 </head>
 
-<body>
-    <!-- <header class=" shadow-sm">
-        <div class="navbar bg-base-100 max-w-9/12 mx-auto">
-            <div class="flex-1">
-                <a class="btn btn-ghost text-xl">
-                    <img src="./assets/github-logo.png" alt="">
-                    <span>GitHub Issues Tracker</span>
-                </a>
-            </div>
-            <div class="join">
+<body class="bg-base-200 min-h-screen">
+    <header>
+        <nav class="bg-white shadow-sm p-4 ">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-5 max-w-[1140px] mx-auto">
+                <div class="flex flex-col md:flex-row items-center gap-1">
+                    <div><img src="./assets/github-logo.png" alt="" class="h-9 w-auto"></div>
+                    <h2 class="text-2xl text-[#1F2937] font-semibold">GitHub Issues Tracker</h2>
+                </div>
+
                 <div>
-                    <label class="input validator join-item">
-                        <input type="search" placeholder="Search issues..." required />
-                    </label>
-                </div>
-                <button class="btn btn-neutral join-item">Join</button>
-            </div>
-        </div>
-    </header> -->
-
-    <nav class="bg-base-200  p-4 ">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-5 max-w-9/12 mx-auto">
-            <div class="flex flex-col md:flex-row items-center gap-1">
-                <div><img src="./assets/github-logo.png" alt="" class="h-9 w-auto"></div>
-                <h2 class="text-2xl text-[#1F2937] font-semibold">GitHub Issues Tracker</h2>
-            </div>
-
-            <div>
-                <div class="join">
-                    <div>
-                        <label class="input validator join-item">
-                            <input type="text" placeholder="Search issues..." required />
-                        </label>
+                    <div class="join">
+                        <div>
+                            <label class="input validator join-item">
+                                <input type="text" placeholder="Search issues..." required />
+                            </label>
+                        </div>
+                        <button class="btn btn-primary join-item">Searh</button>
                     </div>
-                    <button class="btn btn-primary join-item">Searh</button>
                 </div>
             </div>
-        </div>
-    </nav>
-</body>
+        </nav>
+    </header>
 
-</html>
+    <main class="max-w-11/12 xl:max-w-[1140px] mx-auto mt-10 md:mt-15">
+        <!-- tab section -->
+        <section class="bg-white p-6 rounded-lg shadow-sm space-x-2 space-y-2 flex flex-col  sm:flex-row">
+            <div class="w-full sm:w-25"><button class="btn font-semibold text-[#64748B] w-full ">All </button></div>
+            <div class="w-full sm:w-25"><button class="btn font-semibold text-[#64748B] w-full ">Open </button></div>
+            <div class="w-full sm:w-25"><button class="btn font-semibold text-[#64748B] w-full ">Closed </button></div>
+        </section>
+    </main>
+</body>
