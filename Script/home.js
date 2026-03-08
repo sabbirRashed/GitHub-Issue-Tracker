@@ -1,4 +1,5 @@
 
+
 const imageMaker = (status) => {
     if (status.toLowerCase() === "open") {
         const openIcon = `<img src= "./assets/Open-Status.png">`;
@@ -41,6 +42,14 @@ const activeMaker = (id = "all-tab") => {
 }
 
 
+const manageContainer = (id)=>{
+    const containers = document.querySelectorAll(".container");
+    containers.forEach(item => item.classList.add("hidden"));
+
+    document.getElementById(id).classList.remove("hidden");
+}
+
+
 const loadAllIssues = (id) => {
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
     fetch(url)
@@ -72,6 +81,7 @@ const loadAllIssues = (id) => {
 
 const displayIssues = (data) => {
 
+    const issueCount = document.getElementById("issue-count");
     const allIssueContainer = document.getElementById("all-container");
     const openIssueContainer = document.getElementById("open-container");
     const closedIssueContainer = document.getElementById("closed-container");
@@ -115,17 +125,26 @@ const displayIssues = (data) => {
         const activeTab = document.querySelector(".active").id;
 
         if (activeTab === "all-tab") {
+            manageContainer("all-container");
+
             allIssueContainer.appendChild(div);
+            issueCount.innerText = allIssueContainer.children.length;
         }
 
         if (activeTab === "open-tab") {
+            manageContainer("open-container");
+
             if (item.status.toLowerCase() === "open") {
                 openIssueContainer.appendChild(div);
+                issueCount.innerText = openIssueContainer.children.length;
             }
         }
         if (activeTab === "closed-tab") {
+            manageContainer("closed-container");
+
             if (item.status.toLowerCase() === "closed") {
                 closedIssueContainer.appendChild(div);
+                issueCount.innerText = closedIssueContainer.children.length;
             }
         }
 
