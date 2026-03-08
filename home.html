@@ -48,7 +48,7 @@
         </nav>
     </header>
 
-    <main class="max-w-11/12 xl:max-w-[1240px] mx-auto mt-10 md:mt-15 space-y-4">
+    <main class="max-w-11/12 xl:max-w-7xl mx-auto mt-10 md:mt-15 space-y-4">
         <!-- tab section -->
         <section class="bg-white p-6 rounded-lg shadow-sm space-x-2 space-y-2 flex flex-col  sm:flex-row">
             <div onclick="loadAllIssues('all-tab')" class="w-full sm:w-25"><button id="all-tab"
@@ -62,7 +62,6 @@
 
         <!-- Track and manage section -->
         <section class="rounded-lg shadow-md">
-
             <div
                 class="flex flex-col sm:flex-row justify-start sm:justify-between gap-2 bg-white p-6 rounded-t-lg shadow-sm">
                 <!-- left -->
@@ -71,7 +70,7 @@
                         <img src="./assets/Aperture.png" alt="">
                     </div>
                     <div>
-                        <h3 class="text-xl font-semibold text-[#1F2937]"><span id="issue-count">50</span> issues</h3>
+                        <h3 class="text-xl font-semibold text-[#1F2937]"><span id="issue-count">50</span> Issues</h3>
                         <p class="text-[#64748B]">Track and manage your project issues</p>
                     </div>
                 </div>
@@ -99,19 +98,19 @@
             <div id="containers-parent">
                 <!-- All issues card container -->
                 <div id="all-container"
-                    class="container p-3 sm:p-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    class="issue-container p-3 sm:p-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
 
                 </div>
 
                 <!-- Open issue cards container -->
                 <div id="open-container"
-                    class="container p-3 sm:p-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    class="issue-container p-3 sm:p-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
 
                 </div>
 
                 <!-- Closed issue cards container -->
                 <div id="closed-container"
-                    class="container p-3 sm:p-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    class="issue-container p-3 sm:p-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
 
                 </div>
             </div>

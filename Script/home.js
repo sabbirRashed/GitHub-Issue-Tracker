@@ -38,7 +38,7 @@ const activeMaker = (id = "all-tab") => {
 }
 
 const manageContainer = (id) => {
-    const containers = document.querySelectorAll(".container");
+    const containers = document.querySelectorAll(".issue-container");
     containers.forEach(item => item.classList.add("hidden"));
 
     document.getElementById(id).classList.remove("hidden");
