@@ -1,5 +1,4 @@
 
-
 const imageMaker = (status) => {
     if (status.toLowerCase() === "open") {
         const openIcon = `<img src= "./assets/Open-Status.png">`;
@@ -10,7 +9,6 @@ const imageMaker = (status) => {
         return closedIcon;
     }
 }
-
 
 const createElement = (arr) => {
     const htmlElement = arr.map(el => {
@@ -31,26 +29,33 @@ const createElement = (arr) => {
     return (htmlElement.join(" "));
 }
 
-
 const activeMaker = (id = "all-tab") => {
     const tabBtn = document.querySelectorAll(".active");
     tabBtn.forEach(item => {
         item.classList.remove("active");
     });
-
     document.getElementById(id).classList.add("active");
 }
 
-
-const manageContainer = (id)=>{
+const manageContainer = (id) => {
     const containers = document.querySelectorAll(".container");
     containers.forEach(item => item.classList.add("hidden"));
 
     document.getElementById(id).classList.remove("hidden");
 }
 
+const manageSpinner = (status) => {
+    if (status === true) {
+        document.getElementById("spinner").classList.remove("hidden");
+        document.getElementById("containers-parent").classList.add("hidden");
+    } else {
+        document.getElementById("containers-parent").classList.remove("hidden");
+        document.getElementById("spinner").classList.add("hidden");
+    }
+}
 
 const loadAllIssues = (id) => {
+    manageSpinner(true);
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
     fetch(url)
         .then((res) => res.json()
@@ -61,23 +66,6 @@ const loadAllIssues = (id) => {
 
         )
 }
-
-
-// 
-// "id": 1,
-// "title": "Fix navigation menu on mobile devices",
-// "description": "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.",
-// "status": "open",
-// "labels": [
-// "bug",
-// "help wanted"
-// ],
-// "priority": "high",
-// "author": "john_doe",
-// "assignee": "jane_smith",
-// "createdAt": "2024-01-15T10:30:00Z",
-// "updatedAt": "2024-01-15T10:30:00Z"
-// }
 
 const displayIssues = (data) => {
 
@@ -147,20 +135,8 @@ const displayIssues = (data) => {
                 issueCount.innerText = closedIssueContainer.children.length;
             }
         }
-
-
     })
-
-
-
-
-    // if(activeTab === "closed-tab"){
-    //     const openIssues = document.querySelectorAll(".open");
-
-    //     openIssues.forEach(item =>{
-    //         item.classList.add("hidden")
-    //     })
-    // }
+    manageSpinner(false);
 
 }
 

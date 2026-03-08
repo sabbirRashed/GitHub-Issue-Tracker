@@ -51,9 +51,12 @@
     <main class="max-w-11/12 xl:max-w-[1240px] mx-auto mt-10 md:mt-15 space-y-4">
         <!-- tab section -->
         <section class="bg-white p-6 rounded-lg shadow-sm space-x-2 space-y-2 flex flex-col  sm:flex-row">
-            <div onclick="loadAllIssues('all-tab')" class="w-full sm:w-25"><button id="all-tab" class="btn font-semibold text-[#64748B] w-full ">All </button></div>
-            <div onclick="loadAllIssues('open-tab')" class="w-full sm:w-25"><button id="open-tab" class="btn font-semibold text-[#64748B] w-full ">Open </button></div>
-            <div onclick="loadAllIssues('closed-tab')" class="w-full sm:w-25"><button id="closed-tab" class="btn font-semibold text-[#64748B] w-full ">Closed </button></div>
+            <div onclick="loadAllIssues('all-tab')" class="w-full sm:w-25"><button id="all-tab"
+                    class="btn font-semibold text-[#64748B] w-full ">All </button></div>
+            <div onclick="loadAllIssues('open-tab')" class="w-full sm:w-25"><button id="open-tab"
+                    class="btn font-semibold text-[#64748B] w-full ">Open </button></div>
+            <div onclick="loadAllIssues('closed-tab')" class="w-full sm:w-25"><button id="closed-tab"
+                    class="btn font-semibold text-[#64748B] w-full ">Closed </button></div>
         </section>
 
 
@@ -86,19 +89,31 @@
                 </div>
             </div>
 
-            <!-- All issues card container -->
-            <div id="all-container" class="container p-3 sm:p-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                
+            <!-- lodaing spinner -->
+            <div id="spinner" class="flex justify-center space-x-2 p-30 hidden">
+                <span class="loading loading-spinner text-secondary"></span>
+                <span class="loading loading-spinner text-primary"></span>
+                <span class="loading loading-spinner text-secondary"></span>
             </div>
 
-            <!-- Open issue cards container -->
-            <div id="open-container" class="container p-3 sm:p-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                
-            </div>
+            <div id="containers-parent">
+                <!-- All issues card container -->
+                <div id="all-container"
+                    class="container p-3 sm:p-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
-            <!-- Closed issue cards container -->
-            <div id="closed-container" class="container p-3 sm:p-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                
+                </div>
+
+                <!-- Open issue cards container -->
+                <div id="open-container"
+                    class="container p-3 sm:p-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                </div>
+
+                <!-- Closed issue cards container -->
+                <div id="closed-container"
+                    class="container p-3 sm:p-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                </div>
             </div>
         </section>
     </main>
