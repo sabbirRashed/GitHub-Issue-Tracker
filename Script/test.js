@@ -1,4 +1,0 @@
-
-
-
-createElement(["bug", "help wanted"]);

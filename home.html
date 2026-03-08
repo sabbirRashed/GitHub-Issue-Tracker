@@ -12,7 +12,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <!-- fontawsome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +28,7 @@
 <body class="bg-base-200 min-h-screen">
     <header>
         <nav class="bg-white shadow-sm p-4 ">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-5 max-w-[1140px] mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-5 max-w-[1240px] mx-auto">
                 <div class="flex flex-col md:flex-row items-center gap-1">
                     <div><img src="./assets/github-logo.png" alt="" class="h-9 w-auto"></div>
                     <h2 class="text-2xl text-[#1F2937] font-semibold">GitHub Issues Tracker</h2>
@@ -46,20 +48,20 @@
         </nav>
     </header>
 
-    <main class="max-w-11/12 xl:max-w-[1140px] mx-auto mt-10 md:mt-15 space-y-4">
+    <main class="max-w-11/12 xl:max-w-[1240px] mx-auto mt-10 md:mt-15 space-y-4">
         <!-- tab section -->
         <section class="bg-white p-6 rounded-lg shadow-sm space-x-2 space-y-2 flex flex-col  sm:flex-row">
-            <div class="w-full sm:w-25"><button class="btn font-semibold text-[#64748B] w-full ">All </button></div>
-            <div class="w-full sm:w-25"><button class="btn font-semibold text-[#64748B] w-full ">Open </button></div>
-            <div class="w-full sm:w-25"><button class="btn font-semibold text-[#64748B] w-full ">Closed </button></div>
+            <div onclick="loadAllIssues('all-tab')" class="w-full sm:w-25"><button id="all-tab" class="btn font-semibold text-[#64748B] w-full ">All </button></div>
+            <div onclick="loadAllIssues('open-tab')" class="w-full sm:w-25"><button id="open-tab" class="btn font-semibold text-[#64748B] w-full ">Open </button></div>
+            <div onclick="loadAllIssues('closed-tab')" class="w-full sm:w-25"><button id="closed-tab" class="btn font-semibold text-[#64748B] w-full ">Closed </button></div>
         </section>
 
 
         <!-- Track and manage section -->
-        <section class="rounded-lg shadow-sm">
+        <section class="rounded-lg shadow-md">
 
-            <!-- issues header -->
-            <div class="flex flex-col sm:flex-row justify-start sm:justify-between gap-2 bg-white p-6 rounded-lg">
+            <div
+                class="flex flex-col sm:flex-row justify-start sm:justify-between gap-2 bg-white p-6 rounded-t-lg shadow-sm">
                 <!-- left -->
                 <div class="flex items-center gap-2">
                     <div class="p-2 rounded-full bg-purple-200 flex justify-center items-center">
@@ -75,7 +77,8 @@
                 <div class="flex  items-center gap-4">
                     <p class="font-medium text-[#1F2937] flex items-center">
                         <span class="text-green-500 mr-2 text-[12px]"><i class="fa-solid fa-circle"></i></span>
-                        <span>Open</span></p>
+                        <span>Open</span>
+                    </p>
                     <p class="font-medium text-[#1F2937] flex items-center">
                         <span class="text-purple-500 mr-2 text-[12px]"><i class="fa-solid fa-circle"></i></span>
                         <span>Closed</span>
@@ -83,10 +86,24 @@
                 </div>
             </div>
 
-            <!-- issues card container -->
-            <div>
+            <!-- All issues card container -->
+            <div id="all-container" class="p-3 sm:p-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                
+            </div>
 
+            <!-- Open issue cards container -->
+            <div id="open-container" class="p-3 sm:p-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                
+            </div>
+
+            <!-- Closed issue cards container -->
+            <div id="closed-container" class="p-3 sm:p-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                
             </div>
         </section>
     </main>
+
+
+
+    <script src="./Script/home.js"></script>
 </body>

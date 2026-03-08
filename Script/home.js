@@ -14,11 +14,11 @@ const imageMaker = (status) => {
 const createElement = (arr) => {
     const htmlElement = arr.map(el => {
         return `<span class="px-3 py-1 ${el.toLowerCase() === "bug" ? "bg-red-100 text-red-500"
-                : el.toLowerCase() === "help wanted" ? "bg-amber-100 text-amber-500"
-                    : el.toLowerCase() === "enhancement" ? "bg-green-100 text-green-500"
-                        : el.toLowerCase() === "documentation" ? "bg-blue-100 text-blue-500"
-                            : el.toLowerCase() === "good first issue" ? "bg-purple-100 text-purple-500"
-                                : ""}  font-medium rounded-3xl">
+            : el.toLowerCase() === "help wanted" ? "bg-amber-100 text-amber-500"
+                : el.toLowerCase() === "enhancement" ? "bg-green-100 text-green-500"
+                    : el.toLowerCase() === "documentation" ? "bg-blue-100 text-blue-500"
+                        : el.toLowerCase() === "good first issue" ? "bg-purple-100 text-purple-500"
+                            : ""}  font-medium rounded-3xl">
         <i class="${el.toLowerCase() === "bug" ? "fa-solid fa-bug"
                 : el.toLowerCase() === "help wanted" ? "fa-solid fa-life-ring"
                     : el.toLowerCase() === "enhancement" ? "fa-solid fa-wand-magic-sparkles"
@@ -31,11 +31,24 @@ const createElement = (arr) => {
 }
 
 
-const loadAllIssues = () => {
+const activeMaker = (id = "all-tab") => {
+    const tabBtn = document.querySelectorAll(".active");
+    tabBtn.forEach(item => {
+        item.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+}
+
+
+const loadAllIssues = (id) => {
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
     fetch(url)
         .then((res) => res.json()
-            .then((data) => displayIssues(data.data))
+            .then((data) => {
+                activeMaker(id);
+                displayIssues(data.data);
+            })
 
         )
 }
@@ -59,13 +72,19 @@ const loadAllIssues = () => {
 
 const displayIssues = (data) => {
 
-    const issueContainer = document.getElementById("issue-container");
-    issueContainer.innerHTML = "";
+    const allIssueContainer = document.getElementById("all-container");
+    const openIssueContainer = document.getElementById("open-container");
+    const closedIssueContainer = document.getElementById("closed-container");
+
+    allIssueContainer.innerHTML = "";
+    openIssueContainer.innerHTML = "";
+    closedIssueContainer.innerHTML = "";
+
     data.forEach(item => {
 
         const div = document.createElement("div");
         div.innerHTML = `
-                <div class="card bg-white rounded-lg shadow-md h-full ${item.status.toLowerCase() === "open"? "border border-green-200 border-t-4 border-t-green-500": "border border-purple-200 border-t-4 border-t-purple-500"}">
+                <div class="card ${item.status} bg-white rounded-lg shadow-md h-full ${item.status.toLowerCase() === "open" ? "border border-green-200 border-t-4 border-t-green-500" : "border border-purple-200 border-t-4 border-t-purple-500"}">
                     <div class="p-5">
                         <div class="flex justify-between items-center">
                             ${imageMaker(item.status)}
@@ -92,11 +111,37 @@ const displayIssues = (data) => {
                 </div>
 
                 `
-        issueContainer.appendChild(div);
+
+        const activeTab = document.querySelector(".active").id;
+
+        if (activeTab === "all-tab") {
+            allIssueContainer.appendChild(div);
+        }
+
+        if (activeTab === "open-tab") {
+            if (item.status.toLowerCase() === "open") {
+                openIssueContainer.appendChild(div);
+            }
+        }
+        if (activeTab === "closed-tab") {
+            if (item.status.toLowerCase() === "closed") {
+                closedIssueContainer.appendChild(div);
+            }
+        }
+
 
     })
 
 
+
+
+    // if(activeTab === "closed-tab"){
+    //     const openIssues = document.querySelectorAll(".open");
+
+    //     openIssues.forEach(item =>{
+    //         item.classList.add("hidden")
+    //     })
+    // }
 
 }
 

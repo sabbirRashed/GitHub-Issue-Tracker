@@ -4,3 +4,8 @@
     font-family: "Geist", sans-serif;
     box-sizing: border-box;
 }
+
+.active{
+    background-color: #4A00FF;
+    color: white;
+}
