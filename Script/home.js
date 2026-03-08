@@ -75,34 +75,52 @@ const loadIssueInfo = (id) => {
         )
 }
 
+// data": {
+// "id": 33,
+// "title": "Add bulk operations support",
+// "description": "Allow users to perform bulk actions like delete, update status on multiple items at once.",
+// "status": "open",
+// "labels": [
+// "enhancement"
+// ],
+// "priority": "low",
+// "author": "bulk_barry",
+// "assignee": "",
+// "createdAt": "2024-02-02T10:00:00Z",
+// "updatedAt": "2024-02-02T10:00:00Z"
+// }
+
 const displayIssueInfo = (info) => {
 
     const infoContainer = document.getElementById("info-container");
     infoContainer.innerHTML = `
                 <div class="space-y-2">
-                    <h2 class="text-2xl font-bold text-[#1F2937]">Fixed broken image </h2>
+                    <h2 class="text-2xl font-bold text-[#1F2937]">${info.title}</h2>
                     <ul class="flex items-center gap-7 text-sm text-[#64748B]">
-                        <li class="px-5 py-1 bg-green-500 rounded-2xl text-white">opend</li>
-                        <li class="list-disc">name</li>
-                        <li class="list-disc">date</li>
+                        <li class="px-5 py-1 text-white ${info.status === "open"? "bg-green-500": "bg-purple-500"} rounded-2xl text-white">${info.status === "open"? "opened": "closed"}</li>
+                        <li class="list-disc">${info.status === "open"? "opened": "closed"} by ${info.assignee}</li>
+                        <li class="list-disc">${new Date(info.updatedAt).toLocaleDateString()}</li>
                     </ul>
                 </div>
 
                 <div class="">
-                    <span class="px-5 py-1 bg-green-100 rounded-2xl">bug</span>
-                    <span class="px-5 py-1 bg-amber-100 rounded-2xl">documentation</span>
+                    ${createElement(info.labels)}
                 </div>
 
-                <p class="text-[#64748B]">description will be set here</p>
+                <p class="text-[#64748B]">${info.description}</p>
 
-                <div class="grid grid-cols-2 p-4 bg-base-200 rounded-lg">
+                <div class="grid grid-cols-2 p-8 bg-base-200 rounded-lg">
                     <div>
                         <p class="text-[#64748B]">Assigne:</p>
-                        <p class="text-[#1F2937] font-semibold">Assigne Name</p>
+                        <p class="text-[#1F2937] font-semibold">${info.assignee? info.assignee: "Unassigned"}</p>
                     </div>
                     <div>
                         <p class="text-[#64748B]">Priority:</p>
-                        <span class="text-sm font-semibold text-red-500 bg-red-100 px-6 py-1 rounded-2xl">Priority Level</span>
+                        <span class="text-sm text-white font-semibol ${
+                            info.priority === "high"? "bg-red-400"
+                            :info.priority === "medium"? "bg-amber-400"
+                            :info.priority === "low"? "bg-gray-400"
+                            : ""} px-6 py-1 rounded-2xl">${info.priority.toUpperCase()}</span>
                     </div>
                 </div>
     
