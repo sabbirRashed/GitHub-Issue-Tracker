@@ -67,6 +67,50 @@ const loadAllIssues = (id) => {
         )
 }
 
+const loadIssueInfo = (id) => {
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+    fetch(url)
+        .then(res => res.json()
+            .then(data => displayIssueInfo(data.data))
+        )
+}
+
+const displayIssueInfo = (info) => {
+
+    const infoContainer = document.getElementById("info-container");
+    infoContainer.innerHTML = `
+                <div class="space-y-2">
+                    <h2 class="text-2xl font-bold text-[#1F2937]">Fixed broken image </h2>
+                    <ul class="flex items-center gap-7 text-sm text-[#64748B]">
+                        <li class="px-5 py-1 bg-green-500 rounded-2xl text-white">opend</li>
+                        <li class="list-disc">name</li>
+                        <li class="list-disc">date</li>
+                    </ul>
+                </div>
+
+                <div class="">
+                    <span class="px-5 py-1 bg-green-100 rounded-2xl">bug</span>
+                    <span class="px-5 py-1 bg-amber-100 rounded-2xl">documentation</span>
+                </div>
+
+                <p class="text-[#64748B]">description will be set here</p>
+
+                <div class="grid grid-cols-2 p-4 bg-base-200 rounded-lg">
+                    <div>
+                        <p class="text-[#64748B]">Assigne:</p>
+                        <p class="text-[#1F2937] font-semibold">Assigne Name</p>
+                    </div>
+                    <div>
+                        <p class="text-[#64748B]">Priority:</p>
+                        <span class="text-sm font-semibold text-red-500 bg-red-100 px-6 py-1 rounded-2xl">Priority Level</span>
+                    </div>
+                </div>
+    
+    `
+    document.getElementById("info_modal").showModal();
+
+}
+
 const displayIssues = (data) => {
 
     const issueCount = document.getElementById("issue-count");
@@ -82,7 +126,7 @@ const displayIssues = (data) => {
 
         const div = document.createElement("div");
         div.innerHTML = `
-                <div class="card ${item.status} bg-white rounded-lg shadow-md h-full ${item.status.toLowerCase() === "open" ? "border border-green-200 border-t-4 border-t-green-500" : "border border-purple-200 border-t-4 border-t-purple-500"}">
+                <div onclick="loadIssueInfo(${item.id})" class="card bg-white rounded-lg shadow-md h-full ${item.status.toLowerCase() === "open" ? "border border-green-200 border-t-4 border-t-green-500" : "border border-purple-200 border-t-4 border-t-purple-500"}">
                     <div class="p-5">
                         <div class="flex justify-between items-center">
                             ${imageMaker(item.status)}
